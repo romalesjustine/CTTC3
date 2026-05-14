@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EatWise - App</title>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/@vladmandic/face-api/dist/face-api.min.js"
+    ></script>
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="app.js"></script>
+  </head>
+  <body>
+    <div class="app-layout">
+      <aside class="sidebar">
+        <a
+          href="home.html"
+          class="brand"
+          style="text-decoration: none; cursor: pointer"
+        >
+          <div class="brand-icon">⚡</div>
+          <h2>EatWise</h2>
+        </a>
+
+        <nav class="nav-menu panel">
+          <button class="nav-btn active" data-target="database">
+            🔍 Food Database
+          </button>
+          <button class="nav-btn" data-target="about">ℹ️ About Guide</button>
+        </nav>
+
+        <div class="panel ai-panel">
+          <h3>🤖 Mood Recommender</h3>
+          <div
+            class="camera-container"
+            id="cameraContainer"
+            style="display: none"
+          >
+            <video id="videoFeed" width="100%" autoplay muted></video>
+          </div>
+          <button
+            class="btn-primary"
+            id="startAIBtn"
+            style="width: 100%; margin-bottom: 10px"
+          >
+            Enable AI Camera
+          </button>
+
+          <div id="moodResult" class="mood-result" style="display: none">
+            <div class="detected-mood">
+              Mood: <span id="moodLabel" class="highlight">Analyzing...</span>
+            </div>
+            <p id="moodRecommendation" class="mood-text">
+              Please look at the camera.
+            </p>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3>Target Setup</h3>
+          <div class="input-group">
+            <label>Weight (kg)</label>
+            <input type="number" id="userWeight" value="70" />
+          </div>
+          <div class="input-group">
+            <label>Height (cm)</label>
+            <input type="number" id="userHeight" value="175" />
+          </div>
+          <div class="input-group">
+            <label>Age (years)</label>
+            <input type="number" id="userAge" value="30" />
+          </div>
+          <button class="btn-primary" id="calcGoalBtn" style="width: 100%">
+            Calculate Goal
+          </button>
+        </div>
+
+        <div class="panel live-stats">
+          <h3>Daily Progress</h3>
+          <div class="stat-row">
+            <span>Goal:</span>
+            <span id="goalDisplay" class="highlight">2,000 kcal</span>
+          </div>
+          <div class="stat-row">
+            <span>Consumed:</span>
+            <span id="consumedDisplay">0 kcal</span>
+          </div>
+          <div class="stat-row">
+            <span>Remaining:</span>
+            <span id="remainingDisplay" class="highlight-green"
+              >2,000 kcal</span
+            >
+          </div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar-fill" id="progressBar"></div>
+          </div>
+        </div>
+
+        <div class="panel daily-log-panel">
+          <h3>
+            Today's Log
+            <button class="btn-icon" id="clearLogBtn" title="Clear Log">
+              🗑️
+            </button>
+          </h3>
+          <div id="dailyLogList" class="log-list">
+            <div class="empty-state">No food added yet.</div>
+          </div>
+        </div>
+      </aside>
+
+      <main class="workspace">
+        <div
+          id="view-database"
+          class="view-section active"
+          style="flex-direction: column; padding: 0"
+        >
+          <header class="workspace-header">
+            <h1>Food Database</h1>
+            <p>Search, analyze, and add items to your daily log.</p>
+          </header>
+
+          <section class="controls">
+            <div class="search-box">
+              <span class="search-icon">🔍</span>
+              <input
+                type="text"
+                id="searchInput"
+                placeholder="Search for food (e.g., 'chicken', 'apple*')"
+                autocomplete="off"
+              />
+              <button class="btn-primary" id="searchBtn">Search</button>
+              <button class="btn-secondary" id="clearBtn">Clear</button>
+            </div>
+            <div id="statusBox" class="status-message"></div>
+          </section>
+
+          <div class="results-header" id="resultsHeader" style="display: none">
+            <span id="matchCount">0 matches</span>
+            <span>Action</span>
+          </div>
+
+          <section class="results-list" id="resultsList">
+            <button
+              class="btn-secondary btn-load-more"
+              id="loadMoreBtn"
+              style="display: none"
+            >
+              Load More Results
+            </button>
+          </section>
+        </div>
+
+        <div id="view-about" class="view-section">
+          <div class="about-content">
+            <h1>About NutriPro</h1>
+            <p>
+              NutriPro is a Tier-3 Advanced application designed to help users
+              address their nutritional needs through a smart, intuitive
+              dashboard interface.
+            </p>
+            <hr />
+            <h3>Data Source</h3>
+            <p>
+              All nutritional data within this application is derived from the
+              official
+              <strong
+                >U.S. Department of Agriculture (USDA) MyPyramid Food Raw
+                Data</strong
+              >. The raw data has been transformed to ensure lightning-fast
+              searching capabilities.
+            </p>
+            <h3>How the Math Works</h3>
+            <p>
+              The "Target Setup" calculator uses the Mifflin-St Jeor equation to
+              determine your Basal Metabolic Rate (BMR) based on the weight,
+              height, and age you provide. It then applies a standard activity
+              multiplier to generate your Daily Goal.
+            </p>
+            <h3>Privacy</h3>
+            <p>
+              The AI Mood Recommender runs 100% locally in your browser using
+              TensorFlow.js. No camera data or images are ever recorded, saved,
+              or sent to a server.
+            </p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EatWise - Home</title>
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+      /* Override the dashboard's "no-scroll" rule just for this landing page */
+      body {
+        overflow-y: auto !important;
+        height: auto !important;
+        display: block !important;
+        background: var(
+          --bg-dark
+        ) !important; /* Forces the single solid dark blue color */
+      }
+
+      .landing-page {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      /* The top section with the title and button */
+      .hero-banner {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 6rem 2rem 4rem;
+        background: transparent; /* Removed the gradient to make it seamless */
+        text-align: center;
+      }
+
+      /* The bottom section with the 3 cards */
+      .features-section {
+        background: transparent; /* Made transparent so the base blue shows through */
+        padding: 1rem 2rem 6rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="landing-page">
+      <section class="hero-banner">
+        <div class="brand" style="justify-content: center; margin-bottom: 2rem">
+          <div class="brand-icon" style="font-size: 3.5rem">⚡</div>
+          <h2 style="font-size: 3.5rem; color: white">EatWise</h2>
+        </div>
+
+        <p
+          style="
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            line-height: 1.6;
+          "
+        >
+          Your intelligent companion for tracking macros, managing daily goals,
+          and eating smarter.
+        </p>
+
+        <a
+          href="index.html"
+          class="btn-primary btn-large"
+          style="
+            text-decoration: none;
+            margin-top: 2.5rem;
+            display: inline-block;
+          "
+        >
+          Launch Application ➔
+        </a>
+      </section>
+
+      <section class="features-section">
+        <div class="features-grid" style="max-width: 1200px; margin: 0 auto">
+          <div class="feature-card">
+            <div class="feature-icon">🤖</div>
+            <h3 style="font-size: 1.3rem">AI Mood Detection</h3>
+            <p>
+              Turn on the webcam to get food recommendations tailored to your
+              current emotional state.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">📊</div>
+            <h3 style="font-size: 1.3rem">Smart Target Setup</h3>
+            <p>
+              Automatically calculate your Basal Metabolic Rate and daily
+              caloric needs.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3 style="font-size: 1.3rem">Lightning Fast Search</h3>
+            <p>
+              Search thousands of items from the official USDA database
+              instantly.
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
