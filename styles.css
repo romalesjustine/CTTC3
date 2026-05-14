@@ -509,3 +509,115 @@ body {
   border-top: 1px solid var(--border);
   margin: 2rem 0;
 }
+
+/* =========================================
+   📱 MOBILE RESPONSIVENESS (Max Width: 768px)
+   ========================================= */
+@media (max-width: 768px) {
+  /* 1. Stack the layout vertically */
+  .app-layout {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  /* 2. Move the workspace to the top and let it fill the screen */
+  .workspace {
+    order: 1;
+    flex: 1;
+    height: 60vh; /* Give it the majority of the screen */
+  }
+
+  /* 3. Turn the sidebar into a scrollable panel at the bottom */
+  .sidebar {
+    order: 2;
+    height: 40vh; /* Bottom section of the screen */
+    border-top: 2px solid var(--primary);
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  /* 4. Convert vertical navigation into a horizontal mobile tab bar */
+  .nav-menu {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0.5rem;
+  }
+
+  .nav-btn {
+    flex: 1;
+    text-align: center;
+    font-size: 0.85rem;
+    padding: 0.5rem 0.25rem;
+    border-left: none; /* Remove desktop active border */
+    border-bottom: 3px solid transparent;
+  }
+
+  .nav-btn.active {
+    border-left: none;
+    border-bottom: 3px solid var(--primary); /* Move active indicator to bottom */
+  }
+
+  /* 5. Adjust Main Workspace padding for smaller screens */
+  .workspace-header {
+    padding: 1.5rem 1rem 1rem;
+  }
+  .workspace-header h1 {
+    font-size: 1.75rem;
+  }
+  .controls {
+    padding: 0.5rem 1rem;
+  }
+
+  /* 6. Make search box stack neatly */
+  .search-box {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .search-box input {
+    width: 100%;
+  }
+
+  .search-box button {
+    width: 100%;
+    padding: 0.75rem;
+  }
+
+  /* 7. Adjust Results layout */
+  .results-header {
+    padding: 1rem;
+  }
+  .results-list {
+    padding: 0 1rem 1rem;
+  }
+
+  /* Stack the food cards so they don't squish */
+  .result-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .action-area {
+    width: 100%;
+    justify-content: space-between;
+    border-top: 1px solid var(--border);
+    padding-top: 0.75rem;
+  }
+
+  /* 8. Fix Home Page Mobile Layout */
+  .hero-section {
+    padding: 2rem 1rem;
+  }
+  .hero-section h1 {
+    font-size: 2rem;
+  }
+
+  .features-grid {
+    padding: 1rem;
+    grid-template-columns: 1fr; /* Stack feature cards */
+  }
+}
